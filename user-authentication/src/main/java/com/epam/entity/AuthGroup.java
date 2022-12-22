@@ -46,6 +46,7 @@ public class AuthGroup {
 	}
 
 	public String getAuthGroup() {
+		System.out.println(authGroup);
 		return authGroup;
 	}
 

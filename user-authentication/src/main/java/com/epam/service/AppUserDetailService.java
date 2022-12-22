@@ -31,6 +31,7 @@ public class AppUserDetailService implements UserDetailsService {
 		User u = user.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
 		List<AuthGroup> roles = authGroupRepo.findByUsername(username);
+
 		org.springframework.security.core.userdetails.User userDetail = new org.springframework.security.core.userdetails.User(
 				u.getUsername(), u.getPassword(),
 				roles.stream().map(r -> new SimpleGrantedAuthority(r.getAuthGroup())).toList());

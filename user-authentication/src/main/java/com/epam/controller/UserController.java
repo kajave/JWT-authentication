@@ -72,6 +72,8 @@ public class UserController {
 
 	@GetMapping("/authenticate")
 	public String createToken(@RequestBody UserDto dto) throws UserException {
+		System.out.println("In authenticate method");
+
 		try {
 			authenticationManager
 					.authenticate(new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword()));

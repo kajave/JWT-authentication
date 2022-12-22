@@ -47,7 +47,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             username = jwtUtil.extractUsername(jwt);
         }
 
-
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
             if (jwtUtil.validateToken(jwt, userDetails)) {
@@ -61,8 +60,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             } else {
                 throw new JwtException("Invalid Token plese supply valid token");
             }
-        } else {
-            System.out.println("Username is not prent in token!1");
         }
 
         filterChain.doFilter(request, response);

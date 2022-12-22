@@ -33,7 +33,7 @@ public class UserService {
 		try {
 			PasswordEncoder encoder = new BCryptPasswordEncoder();
 			user.setPassword(encoder.encode(user.getPassword()));
-			authGroupRepo.save(new AuthGroup(dto.getUsername(), "USER"));
+			authGroupRepo.save(new AuthGroup(dto.getUsername(), "ADMIN"));
 			userRepository.save(user);
 		} catch (RuntimeException e) {
 			throw new UserException("User not added ssuccesfully");
